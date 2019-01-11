@@ -12,4 +12,27 @@
  */
 
 
-echo "youpla boum";
+echo "## iTop DEV Git Hook ##\n";
+
+
+$repoRoot = execGitCmd('git rev-parse --show-toplevel');
+echo "repo root=$repoRoot\n";
+
+
+$repoBranchSource = execGitCmd('git rev-parse --abbrev-ref @{-1}');
+$repoBranchTarget = execGitCmd('git rev-parse --abbrev-ref head');
+
+echo "previous branch=$repoBranchSource\n";
+echo "checked out branch=$repoBranchTarget\n";
+
+
+
+/**
+ * @param  string $sGitCommand
+ * @return string command return value, stopping at the last letter (no newline car at the end)
+ */
+function execGitCmd($sGitCommand)
+{
+  $sOrigReturn = shell_exec($sGitCommand);
+  return rtrim($sOrigReturn);
+}
