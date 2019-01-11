@@ -1,3 +1,15 @@
 #!/usr/bin/php
 <?php
+/**
+ * post-checkout Git hook for iTop dev
+ *
+ * usage : create a .git/hooks/post-checkout symlink pointing to this file
+ *
+ * What it does : restore iTop dirs per branches : conf/, data/, env-production/
+ * Backups are made prefixing dirs names with ".BKP-HOOK."
+ * If backup does not exists, create empty dirs so that setup run is needed
+ * If backup exists then simple symlink are created
+ */
+
+
 echo "youpla boum";
