@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+
+branch_update="$3"
+
+[ "$branch_update" = '1' ] || exit  # exit if branch didn't change
+
+old_branch=$(git rev-parse --abbrev-ref @{-1})
+newr_banch=$(git rev-parse --abbrev-ref head)
+
+echo "backup config to : "
+echo "restore config from : "
